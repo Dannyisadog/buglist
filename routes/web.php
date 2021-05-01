@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,8 +12,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function() {
     return view('index');
 });
 
-Auth::routes();
+Route::get('/buglist', function() {
+    return view('index');
+});
+
+Route::get('/login', function() {
+    return view('index');
+});
+
+Route::post('/login', 'Auth\LoginController@login');
