@@ -12,6 +12,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
+
         if (!$token = JWTAuth::attempt($credentials)) {
                 return response([
                     'status' => 'error',
@@ -25,5 +26,14 @@ class LoginController extends Controller
                 'token' => $token
             ]
         )->header('Authorization', $token);
+    }
+
+    public function logout(Request $request)
+    {
+        return response(
+            [
+                'status' => 'success'
+            ]
+        );
     }
 }

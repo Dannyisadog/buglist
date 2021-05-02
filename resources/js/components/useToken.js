@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const useToken = () => {
     const getToken = () => {
-        const tokenString = sessionStorage.getItem('user_token');
+        const tokenString = localStorage.getItem('user_token');
         const userToken = JSON.parse(tokenString);
         return userToken ? userToken : null;
     };
@@ -10,13 +10,13 @@ const useToken = () => {
     const [token, setToken] = useState(getToken());
 
     const saveToken = userToken => {
-        sessionStorage.setItem('user_token', JSON.stringify(userToken));
+        localStorage.setItem('user_token', JSON.stringify(userToken));
         setToken(userToken.token);
     }
 
     return {
         setToken: saveToken,
-        token: token
+        token: token,
     }
 };
 

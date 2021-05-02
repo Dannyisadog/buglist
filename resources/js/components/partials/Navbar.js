@@ -1,7 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useToken from '../useToken';
+import LogoutButton from '../LogoutButton';
 
-const Header = () => {
+const Navbar = () => {
+
+    const {token} = useToken();
+
+    const Logout = () => {
+        return (
+            <li className="nav-item">
+                <Link></Link>
+            </li>
+        );
+    };
+
     return (
         <nav className="navbar navbar-expand-md navbar-light">
             <div className="container">
@@ -25,6 +38,7 @@ const Header = () => {
                         <li className="nav-item">
                             <Link className="nav-link" to="/buglist">Buglist</Link>
                         </li> */}
+                        {token ? <LogoutButton/> : null}
                     </ul>
                 </div>
             </div>
@@ -32,4 +46,4 @@ const Header = () => {
     );
 }
 
-export default Header;
+export default Navbar;
